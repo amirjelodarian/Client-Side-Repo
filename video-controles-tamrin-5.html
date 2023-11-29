@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video</title>
+    <style>
+        body{
+            text-align: center;
+        }
+        video{
+            max-width: 800px;
+            border: 3px solid blueviolet;
+            border-radius: 10.4px;
+            box-shadow: 1px 1px 20px;
+        }
+        span{
+            transition: 0.5s;
+            border: 2px solid blueviolet;
+            color: blueviolet;
+            border-radius: 5.6px;
+            font-weight: bold;
+            transform: scale(1.2);
+        }
+        span:hover{
+            transition: 0.5s;
+            background-color: blueviolet;
+            transform: scale(1.2);
+            color: white;
+        }
+        .btns{
+            margin-top: 20px;
+        }
+        @media screen and (max-width: 768px){
+            span{
+                margin: 2px;
+                padding: 1px 6px 3px 10px;
+                font-size: 11px;
+            }
+            video{
+                max-width: 400px;
+                width: 90%;
+            }
+        }
+        @media screen and (min-width: 769px){
+            span{
+                margin: 10px;
+                padding: 2px 6px 2px 8px;
+            }
+            video{
+                max-width: 700px;
+                width: 90%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h3>Amir Jelodarian</h3>
+    <div class="media">
+        <video controls="false" id="vid">
+            <source controls="false" src="video-controles-tamrin-5.mp4" type="video/mp4" />
+            browser dosn't supp
+        </video>
+        <br />
+        <div class="btns">
+            <span id="skip_back">skip 3s <<<</span>
+            <span id="controles">controles</span>
+            <span id="play">play</span>
+            <span id="pause">pause</span>
+            <span id="skip_front">skip 3s >>></span>
+        </div>
+    </div>
+    <script>
+        var vid = document.getElementById("vid");
+        vid.controls = false;
+        
+        document.getElementById("play").addEventListener("click",function(){
+            document.getElementById("play").style.backgroundColor = "green";
+            document.getElementById("play").style.color = "white";
+            document.getElementById("pause").style.backgroundColor = "white";
+            document.getElementById("pause").style.color = "blueviolet";
+            vid.play();
+        });
+        document.getElementById("pause").addEventListener("click",function(){
+            document.getElementById("pause").style.backgroundColor = "green";
+            document.getElementById("pause").style.color = "white";
+            document.getElementById("play").style.backgroundColor = "white";
+            document.getElementById("play").style.color = "blueviolet";
+            vid.pause();
+        });
+        document.getElementById("controles").addEventListener("click",function(){
+            if(vid.controls == false){
+                vid.controls = true;
+                document.getElementById("controles").style.backgroundColor = "green";
+                document.getElementById("controles").style.color = "white";
+            }
+            else if(vid.controls == true){
+                vid.controls = false;
+                document.getElementById("controles").style.backgroundColor = "white";
+                document.getElementById("controles").style.color = "blueviolet";
+            }
+
+        });
+        document.getElementById("skip_front").addEventListener("click",function(){
+            vid.currentTime = vid.currentTime + 3;
+            vid.play();
+        });
+        document.getElementById("skip_back").addEventListener("click",function(){
+            vid.currentTime = vid.currentTime - 3;
+            vid.play();
+        });
+    </script>
+</body>
+</html>
